@@ -13,7 +13,8 @@ exports.create = (req, res) => {
   const task = new Task({
     name: req.body.name,
     title: req.body.title || "Untitled task",
-    content: req.body.content
+    content: req.body.content,
+    status: req.body.status || "Planned"
   });
 
   // Save task in the database
@@ -57,7 +58,8 @@ exports.update = (req, res) => {
     {
       name: req.body.name,
       title: req.body.title || "Untitled Task",
-      content: req.body.content
+      content: req.body.content,
+      status: req.body.status || "Planned"
     },
     { new: true }
   )

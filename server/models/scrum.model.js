@@ -4,7 +4,8 @@ const ScrumSchema = mongoose.Schema(
   {
     name: String,
     title: String,
-    content: String
+    content: String,
+    status: String
   },
   {
     timestamps: true
