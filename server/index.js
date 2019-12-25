@@ -2,9 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const dbConfig = require("./config/database.config.js");
 const mongoose = require("mongoose");
-const ScrumBoard = require("./models/create_scrum");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 const port = 4000;
 
 mongoose.Promise = global.Promise;
