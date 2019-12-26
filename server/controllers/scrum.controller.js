@@ -14,7 +14,8 @@ exports.create = (req, res) => {
     name: req.body.name,
     title: req.body.title || "Untitled task",
     content: req.body.content,
-    status: req.body.status || "Planned"
+    status: req.body.status || "Planned",
+    is_deleted: req.body.is_deleted || false
   });
 
   // Save task in the database
@@ -32,7 +33,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all tasks from the database.
 exports.findAll = (req, res) => {
-  Task.find()
+  Task.find({ is_deleted: false })
     .then(tasks => {
       res.send(tasks);
     })
@@ -59,7 +60,8 @@ exports.update = (req, res) => {
       name: req.body.name,
       title: req.body.title || "Untitled Task",
       content: req.body.content,
-      status: req.body.status || "Planned"
+      status: req.body.status || "Planned",
+      is_deleted: req.body.is_deleted || false
     },
     { new: true }
   )
